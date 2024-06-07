@@ -1,58 +1,108 @@
-# AI 인공지능
-See Midterm and Final Project:
-https://sites.google.com/hanyang.ac.kr/2021ai
+# pacman 사용법
+(1) $ python2.7 pacman.py
+    - 팩맨 게임을 실행합니다.
+
+(2) $ python2.7 pacman.py -l smallClassic -z 2
+    - 더 작은 보드에서 팩맨 게임을 실행하고, 창을 확대합니다.
 
 
-## Getting Started
-The projects for this class assume you use Python "2.7". You may use Linux, Windows 10, or Mac OS.
+## pacman 옵션
+(1) -h, --help
 
-If you run Windows 10, install Ubuntu by following this:
-
-https://ubuntu.com/tutorials/tutorial-ubuntu-on-windows#1-overview
-
-You need to set up the sudo password.
-
-```console
-$sudo apt update
-$sudo apt install python2.7 python-pip
-$sudo apt install unzip zip vim git
-```
-
-If asked, please enter sudo password.
-Install and run Xming
-
-https://sourceforge.net/projects/xming/files/latest/download 
-
-Set the display forwarding
-
-```console
-$export DISPLAY=localhost:0.0
-```
-
-clone project files
-Download project files through git clone (try to learn git:  https://rogerdudler.github.io/git-guide/index.ko.html)
-
-Throughout project, try to commit your changes by git commit -m "change message" so we can track your changes (at least for each task)
-
-```console
-$git clone https://github.com/leeymcj/pacman-ai.git
-$cd pacman-ai
-```
-You should be able to play a game of Pacman by typing the following at the command line (note the left key is a right key is d) : 
-
-```console
-$python2.7 pacman.py
-```
-
-We will develop an intelligent agent (Alpha-Pacman) that plays Pacman for us.
-
-## Submission
-
-zip entire project files including git log
-```console
-$zip <MyName>.zip -r * .git
-```
-then, upload <MyName>.zip to LMS homework submission.
+= 도움말 메시지를 보여줍니다.
 
 
+(2) -n GAMES, --numGames=GAMES
 
+= 게임을 실행할 횟수를 정합니다.
+
+    python2.7 pacman.py -n 3
+
+
+(3) -l LAYOUT_FILE, -layout=LAYOUT_FILE
+
+= 게임의 지도 레이아웃을 로드할 Layout 파일을 설정합니다. [기본값 : mediumClassic]
+
+    python2.7 pacman.py -l smallClassic
+
+(레이아웃 종류는 /pacman/layouts 폴더에서 확인 가능합니다.)
+
+
+(4) -p TYPE, --pacman=TYPE
+
+= 사용할 pacmanAgents 모듈의 타입을 설정합니다. [기본값 : KeyboardAgent]
+
+    python2.7 pacman.py -p LeftTurnAgent
+
+
+(5) -t, --textGraphics
+
+= 출력을 텍스트로만 표시합니다.
+
+
+(6) -q, --quietTextGraphics
+
+= 최소한의 출력과 그래픽 없이 생성합니다.
+
+
+(7) -g TYPE, --ghosts=TYPE
+
+= 사용할 ghostAgents 모듈의 타입을 설정합니다. [기본값 : RandomGhost]
+
+    python2.7 pacman.py -g DirectionalGhost
+
+
+(8) -k NUMGHOSTS, --numghosts=NUMGHOSTS 
+
+= 사용할 최대 ghost 수를 설정합니다 [기본값 : 4]
+
+    python2.7 pacman.py -k 1
+
+
+(9) -z ZOOM, --zoom=ZOOM
+
+= 그래픽 창의 크기를 설정합니다. [기본값 : 1.0]
+
+    python2.7 pacman.py -z 2
+
+
+(10) -f, --fixRandomSeed
+
+= 항상 같은 게임을 하도록 시드를 고정합니다.
+
+
+(11) -r, --recordActions
+
+= 게임 기록을 파일에 기록합니다. (파일명은 플레이한 시간)
+
+
+(12) --replay=GAMETOREPLAY
+
+= 기록된 게임 파일을 실행합니다. (다시 보기 느낌)
+
+
+(13) -a AGENTARGS, --agentArgs=AGENTARGS
+
+= 에이전트에 보낸 쉼표로 구분된 값을 적용합니다.
+
+
+(14) -x NUMTRAINING, --numTraining=NUMTRAINING
+
+= 트레이닝 중인 에피소드 수를 설정합니다 (출력 억제) [기본값 : 0]
+
+
+(15) --frameTime=FRAMETIME
+
+= 프레임 간 지연시간, <0은 키보드를 의미합니다. [기본값 : 0.1]
+
+    python2.7 pacman.py --frameTime=-0.1
+
+
+(16) -c, --catchExceptions
+
+= 게임 중 예외 처리 및 시간 제한을 켭니다.
+
+
+(17) --timeout=TIMEOUT
+
+= 에이전트가 단일 게임에서 컴퓨팅에 소비할 수 있는 최대 시간을 설정합니다. [기본값 : 30]
